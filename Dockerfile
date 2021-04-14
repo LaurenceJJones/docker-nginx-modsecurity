@@ -103,6 +103,9 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& tar -zxC /usr/src -f nginx.tar.gz \
 	&& rm nginx.tar.gz \
 	&& cd /usr/src \
+	&& git clone https://github.com/coreruleset/coreruleset \
+	&& mv coreruleset /usr/local \
+	&& cp /usr/local/coreruleset/crs-setup.conf.example /usr/local/coreruleset/crs-setup.conf \
 	&& git clone https://github.com/SpiderLabs/ModSecurity \
 	&& cd ModSecurity \
 	&& git checkout v3/master \
@@ -142,6 +145,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& make install \
 	&& rm -rf /etc/nginx/html/ \
 	&& mkdir /etc/nginx/conf.d/ \
+	&& mkdir /etc/nginx/modsec/ \
 	&& mkdir -p /usr/share/nginx/html/ \
 	&& install -m644 html/index.html /usr/share/nginx/html/ \
 	&& install -m644 html/50x.html /usr/share/nginx/html/ \
@@ -187,6 +191,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
+COPY main.conf /etc/nginx/modsec/main.conf
 
 EXPOSE 80
 
