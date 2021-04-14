@@ -192,6 +192,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 COPY main.conf /etc/nginx/modsec/main.conf
+COPY modsec.conf /etc/nginx/modsec/modsec.conf
 
 EXPOSE 80
 
