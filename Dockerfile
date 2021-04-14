@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL maintainer="Elisiano Petrini <elisiano@gmail.com>"
+LABEL maintainer="Laurence <me@laurencejones.dev>"
 
 ENV NGINX_VERSION 1.18.0
 
